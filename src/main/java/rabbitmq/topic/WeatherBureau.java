@@ -1,4 +1,4 @@
-package rabbitmq.routing;
+package rabbitmq.topic;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -25,8 +25,8 @@ public class WeatherBureau {
 
         for (Map.Entry<String, String> entry : data.entrySet()) {
             // 参数 1：交换机
-            // 参数 2：路由名字，暂时用不到
-            channel.basicPublish(RabbitmqConstant.EXCHANGE_ROUTING_WEATHER, entry.getKey(), null, entry.getValue().getBytes());
+            // 参数 2：路由名字
+            channel.basicPublish(RabbitmqConstant.EXCHANGE_TOPIC_WEATHER, entry.getKey(), null, entry.getValue().getBytes());
         }
 
         channel.close();
