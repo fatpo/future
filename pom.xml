@@ -7,9 +7,22 @@
 
     <groupId>fatpo</groupId>
     <artifactId>future</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>spring-rabbitmq-producer-v1</module>
+        <module>spring-rabbitmq-consumer-v1</module>
+        <module>spring-rabbitmq-producer-v2</module>
+        <module>spring-rabbitmq-consumer-v2</module>
+    </modules>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -54,6 +67,11 @@
             <artifactId>junit-jupiter</artifactId>
             <version>RELEASE</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>2.4.0</version>
         </dependency>
     </dependencies>
 
