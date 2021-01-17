@@ -16,6 +16,7 @@
         <module>spring-rabbitmq-consumer-v2</module>
         <module>zookeeper-demo</module>
         <module>redis-demo</module>
+        <module>nettydemo</module>
     </modules>
 
     <dependencies>
