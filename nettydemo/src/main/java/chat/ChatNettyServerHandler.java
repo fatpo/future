@@ -18,24 +18,26 @@ public class ChatNettyServerHandler extends SimpleChannelInboundHandler<String> 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         Channel channel = ctx.channel();
-        channelGroup.writeAndFlush(channel.remoteAddress() + "上线了");
+        channelGroup.writeAndFlush("【服务器消息】" + channel.remoteAddress() + "上线了\n");
 
         channelGroup.add(channel);
-        System.out.println(channel.remoteAddress() + "上线了");
+        System.out.println("【服务器消息】" + channel.remoteAddress() + "上线了");
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         Channel channel = ctx.channel();
-        channelGroup.writeAndFlush(channel.remoteAddress() + "下线了");
+        channelGroup.writeAndFlush("【服务器消息】" + channel.remoteAddress() + "下线了\n");
 
         channelGroup.remove(channel);
-        System.out.println(channel.remoteAddress() + "下线了");
+        System.out.println("【服务器消息】" + channel.remoteAddress() + "下线了");
     }
 
+
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
-        Channel channel = ctx.channel();
+    protected void channelRead0(ChannelHandlerContext channelHandlerContext, String msg) throws Exception {
+        System.out.println("【服务器消息】收到一条消息：" + msg);
+        Channel channel = channelHandlerContext.channel();
         channelGroup.forEach(ch -> {
             if (channel == ch) {
                 ch.writeAndFlush("[自己]：" + msg + "\n");
@@ -43,5 +45,11 @@ public class ChatNettyServerHandler extends SimpleChannelInboundHandler<String> 
                 ch.writeAndFlush("[" + channel.remoteAddress() + "]：" + msg + "\n");
             }
         });
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        cause.printStackTrace();
+        ctx.close();
     }
 }
