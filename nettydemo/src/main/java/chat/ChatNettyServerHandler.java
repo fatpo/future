@@ -11,7 +11,7 @@ import io.netty.util.concurrent.GlobalEventExecutor;
  * 自定义Handler需要继承netty规定好的某个HandlerAdapter(规范)
  */
 public class ChatNettyServerHandler extends SimpleChannelInboundHandler<String> {
-    private static ChannelGroup channelGroup = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
+    private static final ChannelGroup channelGroup = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 
 
     //该方法发出的消息，自身channel还未形成所以不能收到消息
