@@ -17,6 +17,7 @@
         <module>zookeeper-demo</module>
         <module>redis-demo</module>
         <module>nettydemo</module>
+        <module>jvmdemo</module>
     </modules>
 
     <dependencies>
