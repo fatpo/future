@@ -18,6 +18,7 @@
         <module>redis-demo</module>
         <module>nettydemo</module>
         <module>jvmdemo</module>
+        <module>designDemo</module>
     </modules>
 
     <dependencies>
