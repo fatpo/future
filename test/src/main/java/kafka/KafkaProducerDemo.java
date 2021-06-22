@@ -43,5 +43,17 @@ public class KafkaProducerDemo {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        try {
+            final Thread thread = new Thread(() -> {
+                while (true) {
+
+                }
+            });
+            thread.start();
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
